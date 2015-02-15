@@ -8,6 +8,9 @@
 	<script src="main.js"></script>
 	<script>
 	    $(function() {
+	    	var startSelected = false;
+	    	var endSelected = false;
+
 	    	$('#calendar').datepicker({
 			        inline: true,
       				numberOfMonths: 12,
@@ -17,12 +20,38 @@
 			        hideIfNoPrevNext: true,
 			        onSelect: function (date, inst) {
 			        	inst.inline = false; // Disable calendar reset
-			        	
-			        	console.log(date);
+			        	if(!startSelected && !endSelected){
+			        		$('#start-date').val(date);
+			        	}else if(startSelected && !endSelected){
+			        		$('#end-date').val(date);
+			        		console.log($('#end-date'));
+			        		console.log(date);
+			        	}
+			        	else{
+			        		$('#start-date').val("");
+			        		$('#end-date').val("");
+			        	}
 				    }
 			    });
 
 	    	$.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+
+	    	$('#calendar td').click(function(event) {
+	    		if(!startSelected && !endSelected){
+	    			startSelected = true;
+		    		$(this).addClass('selected-booking');
+		    		$(this).prepend('<aside class="bookingInfo-start">Début du séjour</aside>');
+	    		}else if(startSelected && !endSelected){
+	    			endSelected = true;
+		    		$(this).addClass('selected-booking');
+		    		$(this).append('<aside class="bookingInfo-end">Fin du séjour</aside>');
+	    		}else{
+	    			$('aside.bookingInfo-start, aside.bookingInfo-end').remove();
+	    			$('.selected-booking').removeClass('selected-booking');
+	    			startSelected = false;
+	    			endSelected = false;
+	    		}
+	    	});
 
 	    	//$('#calendar .ui-datepicker-group').hide();
 	    	//$('#calendar .ui-datepicker-group').slice(0, 3).show();
@@ -31,12 +60,14 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:700' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
 
 </head>
 <body>
 	
 <div id="calendar"></div>
+
+<input id="start-date" type="text"/><input id="end-date" type="text"/>
 
 <?php 
 
