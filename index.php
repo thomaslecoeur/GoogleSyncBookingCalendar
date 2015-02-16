@@ -120,7 +120,6 @@
 	</script>
 
 	<link rel="stylesheet" href="stylesheets/style.css">
-	<link rel="stylesheet" href="lib/animate.css">
 
 </head>
 <body>
