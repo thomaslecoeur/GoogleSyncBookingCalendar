@@ -17,6 +17,8 @@ $font : 'Montserrat', sans-serif;
 
 $xs-device-max : 767px;
 
+$UIColor : #FFC001;
+
 /*-----  End of VARIABLES  ------*/
 
 
@@ -303,21 +305,21 @@ td.continued-rounded:after{
 
 
 .selected-booking{
-	background:yellow !important;
+	background:$UIColor !important;
 
 	&:hover:not(.ui-state-disabled){
-		background: yellow !important;
+		background: $UIColor !important;
 		box-shadow: none !important;
 	}
 }
 
 
 .booking-time{
-	background: yellow;
+	background: $UIColor;
 	border-radius: 0 !important;
 
 	&:hover:not(.ui-state-disabled){
-		background: yellow !important;
+		background: $UIColor !important;
 		box-shadow: none !important;
 	}
 
@@ -381,8 +383,8 @@ td.continued-rounded:after{
 		button{
 			padding: 15px;
 			border: none;
-			background: yellow;
-			color: #333;
+			background: $UIColor;
+			color: #fff;
 			text-transform: uppercase;
 			font-weight: bold;
 			font-family: $font;
@@ -429,16 +431,20 @@ body{
 }
 
 #header{
-	background:yellow;
+	background:$UIColor;
 	text-align: center;
 	padding: 30px 0;
 	padding-bottom: 20px;
-	margin-bottom: 20px;
-	color: #000;
+	margin-bottom: 40px;
+	color: #fff;
 
 	h1{
 		margin-top: 0;
 		margin-bottom: 0;
+		span.version{
+			font-size: 12px;
+			color: darken($UIColor, 30%);
+		}
 	}
 
 	h2{
@@ -453,17 +459,21 @@ body{
 			list-style: none;
 			margin: 0;
 			padding: 0;
+			font-size: 0;
 			li{
 				display: inline-block;
 				vertical-align: middle;
 				margin: 0 20px;
 				position: relative;
 				a{
-					font-size: 30px;
-					color: #000;
+					.fa{
+						font-size: 30px;
+					}
+					color: #fff;
+					transition: color 0.2s;
 
 					&:hover{
-						color: #fff;
+						color: darken($UIColor, 30%);
 					}
 				}
 			}
@@ -476,22 +486,27 @@ section{
 
 	&#output{
 		padding-top: 15px;
+		margin-top: 20px;
+		background: $UIColor;
 		h2{
 			text-align: center;
 			text-transform: uppercase;
 			margin: 0;
 			padding: 0;
+			color: #fff;
 		}
 
 		p{
 			text-align: center;
 			display: inline-block;
+			padding: 10px;
+
 			input{
 				font-family: $font;
 				text-align: center;
 				padding: 15px;
 				border-radius: 3px;
-				border: solid 1px #ccc;
+				border: none;
 			}
 		}
 	}

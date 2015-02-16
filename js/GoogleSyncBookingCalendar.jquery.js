@@ -113,4 +113,50 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	setBookings = function(year, month, day, yearEnd, monthEnd, dayEnd){
+	$('#calendar td').not('.ui-state-disabled').each(function(index, el) {
+		console.log('lala');
+		if($(this).data('month') === month && $(this).data('year') === year && $(this).children('a').html() == day){
+			$(this).addClass('booked start-booking');
+
+			var setBooked = function(td){
+				if(td.next('td').length != 0){
+					$nextTd = td.next('td');
+				}else if(td.parent('tr').next('tr').length != 0){
+					$nextTd = td.parent('tr').next('tr').children('td').first();
+				}else if(td.parents('.ui-datepicker-group').next('.ui-datepicker-group').length != 0){
+					$nextTd = td.parents('.ui-datepicker-group').next('.ui-datepicker-group').find('td').first();
+				}else{
+					return false;
+				}
+
+				if(td.hasClass('ui-state-disabled')){
+					if(!$nextTd.hasClass('ui-state-disabled')){
+						td.addClass('previously');
+						$nextTd.addClass('previously-rounded');
+					}
+				}
+
+				if($nextTd.hasClass('ui-state-disabled')){
+					if(!td.hasClass('ui-state-disabled')){
+						td.addClass('continued-rounded');
+						$nextTd.addClass('continued');
+					}
+				}
+
+				if($nextTd.data('month') === monthEnd && $nextTd.data('year') === yearEnd && $nextTd.children('a').html() == dayEnd){
+					
+					$nextTd.addClass('booked end-booking');
+					return false;
+				}else{
+					$nextTd.addClass('booked');
+				}
+				setBooked($nextTd);
+			}
+
+			setBooked($(this));
+		}
+	});
+}
+
 });
