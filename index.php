@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Google Sync Booking Calendar | Made with love by Thomas Lecoeur</title>
 	<script src="lib/jquery-1.10.2.js"></script>
 	<script src="lib/jquery-ui.js"></script>
