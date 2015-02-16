@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
-	var startSelected = false;
-	var endSelected = false;
+	startSelected = false;
+	endSelected = false;
 
 	/* Init the calendar */
 
@@ -13,15 +13,17 @@ jQuery(document).ready(function($) {
 		hideIfNoPrevNext: true,
 		onSelect: function (date, inst) {
         	inst.inline = false; // Disable calendar reset
-        	if(!startSelected && !endSelected){
-        		$('#start-date').val(date);
-        	}else if(startSelected && !endSelected){
-        		$('#end-date').val(date);
-        	}
-        	else{
-        		$('#start-date').val("");
-        		$('#end-date').val("");
-        	}
+        	// if(!startSelected && !endSelected){
+        	// 	if(startSelected)
+        	// 		$('#start-date').val(date);
+        	// }else if(startSelected && !endSelected){
+        	// 	$('#end-date').val(date);
+        	// }
+        	// else{
+        	// 	$('#start-date').val("");
+        	// 	$('#end-date').val("");
+        	// }
+        	currentDate = date;
         }
     });
 
@@ -38,10 +40,11 @@ jQuery(document).ready(function($) {
 
 	$('#calendar td').click(function(event) {
 		if(!startSelected && !endSelected){
-			if(!$(this).is('.booked:not(.end-booking)')){
+			if(!$(this).is('.booked:not(.end-booking)') && !$(this).is('.ui-state-disabled')){
 				startSelected = true;
 				$(this).addClass('selected-booking');
 				$(this).prepend('<aside class="bookingInfo-start">Début du séjour</aside>');
+				$('#start-date').val(currentDate);
 			}else{
 				$(this).append('<aside class="bookingInfo-end alert">Réservation impossible</aside>');
 				$('.alert').delay(3000).fadeOut();
@@ -50,11 +53,12 @@ jQuery(document).ready(function($) {
 			var $cells = $('#calendar td'),
 			idx_1 = $cells.index($('.selected-booking')),
 			idx_2 = $cells.index($(this));
-			if((!$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking)') || ($('.selected-booking').hasClass('end-booking') && !$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking):not(.end-booking)') && $cells.slice(idx_1, idx_2 + 1).filter('.end-booking').length <= 1)) && $cells.slice(idx_1, idx_2 + 1).length > 1){
+			if((!$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking)') || ($('.selected-booking').hasClass('end-booking') && !$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking):not(.end-booking)') && $cells.slice(idx_1, idx_2 + 1).filter('.end-booking').length <= 1)) && $cells.slice(idx_1, idx_2 + 1).length > 1 && !$(this).is('.ui-state-disabled')){
 				endSelected = true;
 				$cells.slice(idx_1+1, idx_2).addClass('booking-time');
 				$(this).addClass('selected-booking');
 				$(this).append('<aside class="bookingInfo-end">Fin du séjour</aside>');
+				$('#end-date').val(currentDate);
 			}else{
 				$(this).append('<aside class="bookingInfo-end alert">Réservation impossible</aside>');
 				$('.alert').delay(3000).fadeOut();
@@ -65,6 +69,8 @@ jQuery(document).ready(function($) {
 			$('.booking-time').removeClass('booking-time');
 			startSelected = false;
 			endSelected = false;
+			$('#start-date').val("");
+        	$('#end-date').val("");
 		}
 	});
 

@@ -15,7 +15,20 @@
 $bookedColor : #ea6153;
 $font : 'Montserrat', sans-serif;
 
+$xs-device-max : 767px;
+
 /*-----  End of VARIABLES  ------*/
+
+
+/*===============================
+=            GENERAL            =
+===============================*/
+
+
+
+/*-----  End of GENERAL  ------*/
+
+
 
 
 /*========================================
@@ -24,6 +37,10 @@ $font : 'Montserrat', sans-serif;
 
 #calendar{
 	text-align: center;
+	font-family: $font;
+	position: relative;
+	display: inline-block;
+	overflow: visible;
 }
 
 .ui-datepicker,
@@ -35,14 +52,17 @@ $font : 'Montserrat', sans-serif;
 	margin: 0;
 	padding: 0;
 	border: none;
-	font-family: $font;
 	border-spacing: 0;
 	position: relative;
 }
 
 .ui-datepicker{
 	white-space: nowrap;
-	overflow: hidden;
+	overflow: visible;
+	@media (max-width: $xs-device-max) {
+		white-space: normal;
+		overflow: hidden;
+	}
 }
 
 .ui-datepicker-prev, .ui-datepicker-next{
@@ -350,3 +370,130 @@ td.continued-rounded:after{
 		}
 	}
 }
+
+
+/*===========================================
+=            NAV OF THE CALENDAR            =
+===========================================*/
+
+#calendar{
+	nav{
+		button{
+			padding: 15px;
+			border: none;
+			background: yellow;
+			color: #333;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-family: $font;
+			border-radius: 3px;
+			top: 50%;
+			margin-top: -20px;
+			&.prev{
+				position: absolute;
+				left: -120px;
+			}
+
+			&.next{
+				position: absolute;
+				right: -75px;
+			}
+
+			&:hover{
+				cursor: pointer;
+			}
+
+			&[disabled]{
+				background: #ccc;
+				color: #aaa;
+
+				&:hover{
+					cursor: default;
+				}
+			}
+		}
+	}
+}
+
+/*-----  End of NAV OF THE CALENDAR  ------*/
+
+
+/*=============================
+=            OTHER            =
+=============================*/
+
+body{
+	padding: 0;
+	margin: 0;
+	font-family: $font;
+}
+
+#header{
+	background:yellow;
+	text-align: center;
+	padding: 30px 0;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	color: #000;
+
+	h1{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	h2{
+		text-transform: none;
+		font-size: 12px;
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
+
+	nav{
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0 20px;
+				position: relative;
+				a{
+					font-size: 30px;
+					color: #000;
+
+					&:hover{
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+
+section{
+	text-align: center;
+
+	&#output{
+		padding-top: 15px;
+		h2{
+			text-align: center;
+			text-transform: uppercase;
+			margin: 0;
+			padding: 0;
+		}
+
+		p{
+			text-align: center;
+			display: inline-block;
+			input{
+				font-family: $font;
+				text-align: center;
+				padding: 15px;
+				border-radius: 3px;
+				border: solid 1px #ccc;
+			}
+		}
+	}
+}
+/*-----  End of OTHER  ------*/
