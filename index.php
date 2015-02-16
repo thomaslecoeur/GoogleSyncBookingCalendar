@@ -136,6 +136,15 @@ foreach ($obj->items as $item) {
 
 
  ?>
+<footer id="footer">
+<hr>
+	<ul>
+		<li>Tous droits réservés &copy; 2015 Thomas Lecoeur</li>
+		<li><a href="http://www.thomaslecoeur.com" target="_blank">Made with <i class="fa fa-heart"></i> by Thomas Lecoeur</a></li>
+		<li><a href="https://twitter.com/Thomas_Lecoeur" target="_blank"><i class="fa fa-twitter"></i> Follow me on Twitter !</a></li>
+		<li><a href="https://github.com/Thomeuxe/GoogleSyncBookingCalendar" target="_blank"><i class="fa fa-github"></i> Fork this project !</a></li>
+	</ul>
+</footer>
 
 </body>
 </html>
