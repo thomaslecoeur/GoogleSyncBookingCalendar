@@ -64,16 +64,9 @@ foreach ($obj->items as $item) {
 		$date->end->year = (int) date("Y",strtotime($item->end->date));
 		$date->end->month = (int) date("n",strtotime($item->end->date))-1;
 		$date->end->day = (int) date("j",strtotime($item->end->date));
-	}
-	//var_dump($date);
-		// echo 'Du '.date("j/n/Y",strtotime($item->start->date));
-		// echo ' au '.date("j/n/Y",strtotime($item->end->date)).'<br>';
+
 		?>
-		<!-- <script>
-			jQuery(document).ready(function($) {
-				setBookings(<?php echo date("Y",strtotime($item->start->date))?>, <?php echo date("n",strtotime($item->start->date))-1?>, <?php echo date("n",strtotime($item->start->date))?>, <?php echo date("Y",strtotime($item->end->date))?>, <?php echo date("n",strtotime($item->end->date))-1?>, <?php echo date("n",strtotime($item->end->date))?>);
-			});
-		</script> -->
+		
 		<script>
 
 			jQuery(document).ready(function($) {
@@ -123,6 +116,18 @@ foreach ($obj->items as $item) {
 			});
 			
 		</script>
+
+		<?php
+	}
+	//var_dump($date);
+		// echo 'Du '.date("j/n/Y",strtotime($item->start->date));
+		// echo ' au '.date("j/n/Y",strtotime($item->end->date)).'<br>';
+		?>
+		<!-- <script>
+			jQuery(document).ready(function($) {
+				setBookings(<?php echo date("Y",strtotime($item->start->date))?>, <?php echo date("n",strtotime($item->start->date))-1?>, <?php echo date("n",strtotime($item->start->date))?>, <?php echo date("Y",strtotime($item->end->date))?>, <?php echo date("n",strtotime($item->end->date))-1?>, <?php echo date("n",strtotime($item->end->date))?>);
+			});
+		</script> -->
 
 		<?php
 }
