@@ -1,85 +1,16 @@
-/* line 3, ../sass/style.scss */
-.selected-booking {
-  background: yellow !important;
-}
-/* line 6, ../sass/style.scss */
-.selected-booking:hover {
-  background: yellow !important;
-  box-shadow: none !important;
-}
-
-/* line 13, ../sass/style.scss */
-.booking-time {
-  background: yellow;
-  border-radius: 0 !important;
-}
-/* line 17, ../sass/style.scss */
-.booking-time:hover {
-  background: yellow !important;
-  box-shadow: none !important;
-}
-/* line 22, ../sass/style.scss */
-.booking-time.ui-state-disabled {
-  background: none;
-}
-
-/* line 27, ../sass/style.scss */
-.bookingInfo-start, .bookingInfo-end {
-  display: inline-block;
-  position: absolute;
-  font-size: 12px;
-  text-transform: uppercase;
-  background: #000;
-  border-radius: 3px;
-  height: 40px;
-  right: 55px;
-  bottom: 0;
-  line-height: 40px;
-  padding: 0 10px;
-  color: #fff;
-  z-index: 20;
-}
-/* line 42, ../sass/style.scss */
-.bookingInfo-start:after, .bookingInfo-end:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border: solid 5px transparent;
-  border-left-color: #000;
-  bottom: 16px;
-  right: -10px;
-}
-
-/* line 53, ../sass/style.scss */
-.bookingInfo-end {
-  left: 55px;
-  right: auto;
-}
-/* line 57, ../sass/style.scss */
-.bookingInfo-end:after {
-  border: solid 5px transparent;
-  border-right-color: #000;
-  left: -10px;
-  right: auto;
-}
-/* line 64, ../sass/style.scss */
-.bookingInfo-end.alert {
-  background: #c02717;
-}
-/* line 66, ../sass/style.scss */
-.bookingInfo-end.alert:after {
-  border-right-color: #c02717;
-}
-
-/* line 72, ../sass/style.scss */
-.ui-datepicker-group {
-  border-radius: 3px;
-  /*overflow: hidden;*/
-  box-shadow: inset 0 0 0 2px #333;
-  margin-bottom: 10px;
-}
-
-/* line 79, ../sass/style.scss */
+/*===============================
+=            IMPORTS            =
+===============================*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+/*-----  End of IMPORTS  ------*/
+/*=================================
+=            VARIABLES            =
+=================================*/
+/*-----  End of VARIABLES  ------*/
+/*========================================
+=            CALENDAR GENERAL            =
+========================================*/
+/* line 25, ../sass/style.scss */
 .ui-datepicker,
 .ui-datepicker table,
 .ui-datepicker tr,
@@ -89,30 +20,34 @@
   margin: 0;
   padding: 0;
   border: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-spacing: 0;
   position: relative;
 }
 
-/* line 93, ../sass/style.scss */
+/* line 39, ../sass/style.scss */
 .ui-datepicker {
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* line 98, ../sass/style.scss */
+/* line 44, ../sass/style.scss */
 .ui-datepicker-prev, .ui-datepicker-next {
   position: absolute !important;
 }
 
-/* line 102, ../sass/style.scss */
+/* line 48, ../sass/style.scss */
 .ui-datepicker-group {
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px #333;
+  margin-bottom: 10px;
 }
 
-/* line 108, ../sass/style.scss */
+/*==========  Calendar > elements  ==========*/
+/* line 60, ../sass/style.scss */
 .ui-datepicker-header {
   text-align: center;
   background: #444;
@@ -122,14 +57,14 @@
   border-radius: 3px 3px 0 0;
 }
 
-/* line 117, ../sass/style.scss */
+/* line 69, ../sass/style.scss */
 .ui-datepicker-group th {
   background: #333;
   color: #fff;
   padding: 10px 0;
 }
 
-/* line 123, ../sass/style.scss */
+/* line 75, ../sass/style.scss */
 .ui-datepicker-group td {
   height: 40px;
   width: 40px !important;
@@ -138,45 +73,41 @@
   cursor: pointer;
 }
 
-/* line 131, ../sass/style.scss */
-td:not(.ui-state-disabled) {
+/*-----  End of CALENDAR GENERAL  ------*/
+/*============================================
+=            ALREADY BOOKED ITEMS            =
+============================================*/
+/* line 92, ../sass/style.scss */
+#calendar td:not(.ui-state-disabled) {
   border-radius: 3px;
   color: #000;
-  /*background: $bookedColor;
-  color: #fff;*/
   transition: all 0.3s;
 }
-
-/* line 139, ../sass/style.scss */
-td:not(.ui-state-disabled):hover {
+/* line 97, ../sass/style.scss */
+#calendar td:not(.ui-state-disabled):hover {
   background: #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.4);
 }
-
-/* line 144, ../sass/style.scss */
-td:not(.ui-state-disabled):hover:after, td:not(.ui-state-disabled):hover:before {
+/* line 101, ../sass/style.scss */
+#calendar td:not(.ui-state-disabled):hover:after, #calendar td:not(.ui-state-disabled):hover:before {
   opacity: 0;
 }
-
-/* line 148, ../sass/style.scss */
-td.booked {
+/* line 107, ../sass/style.scss */
+#calendar td.booked {
   position: relative;
 }
-
-/* line 152, ../sass/style.scss */
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled) {
+/* line 110, ../sass/style.scss */
+#calendar td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled) {
   cursor: default;
   background: none;
 }
-
-/* line 157, ../sass/style.scss */
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled) a {
+/* line 114, ../sass/style.scss */
+#calendar td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled) a {
   color: #b43;
   cursor: default;
 }
-
-/* line 162, ../sass/style.scss */
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):after {
+/* line 119, ../sass/style.scss */
+#calendar td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -186,38 +117,35 @@ td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):after {
   width: 100%;
   background: #ea6153;
 }
-
-/* line 173, ../sass/style.scss */
-td.booked.end-booking.start-booking a {
+/* line 130, ../sass/style.scss */
+#calendar td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover {
+  box-shadow: none;
+}
+/* line 134, ../sass/style.scss */
+#calendar td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover:after {
+  opacity: 1;
+}
+/* line 140, ../sass/style.scss */
+#calendar td.booked.end-booking.start-booking a {
   color: #ccc;
   position: relative;
   z-index: -10;
 }
-
-/* line 179, ../sass/style.scss */
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover, td.booked.end-booking.start-booking:hover {
-  box-shadow: none;
+/* line 147, ../sass/style.scss */
+#calendar td.booked.end-booking.start-booking:hover a {
   cursor: default;
 }
-
-/* line 184, ../sass/style.scss */
-td.booked.end-booking.start-booking:hover a {
-  cursor: default;
-}
-
-/* line 188, ../sass/style.scss */
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover:after, td.booked.end-booking.start-booking:hover:after, td.booked.end-booking.start-booking:hover:before {
+/* line 155, ../sass/style.scss */
+#calendar td.booked.end-booking.start-booking:hover:after, #calendar td.booked.end-booking.start-booking:hover:before {
   opacity: 1;
 }
-
-/* line 192, ../sass/style.scss */
-td.start-booking {
+/* line 160, ../sass/style.scss */
+#calendar td.start-booking {
   position: relative;
   background: none;
 }
-
-/* line 197, ../sass/style.scss */
-td.start-booking:before {
+/* line 164, ../sass/style.scss */
+#calendar td.start-booking:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -228,16 +156,13 @@ td.start-booking:before {
   border-right-color: #ea6153;
   transition: opacity 0.1s;
 }
-
-/* line 209, ../sass/style.scss */
-td.end-booking {
+/* line 177, ../sass/style.scss */
+#calendar td.end-booking {
   position: relative;
-  overflow: hidden;
   background: none;
 }
-
-/* line 215, ../sass/style.scss */
-td.end-booking:after {
+/* line 181, ../sass/style.scss */
+#calendar td.end-booking:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -249,25 +174,25 @@ td.end-booking:after {
   transition: opacity 0.1s;
 }
 
-/* line 228, ../sass/style.scss */
+/* line 196, ../sass/style.scss */
 .ui-datepicker-group td a {
   color: #000;
   text-decoration: none;
 }
 
-/* line 233, ../sass/style.scss */
+/* line 201, ../sass/style.scss */
 .ui-state-disabled {
   cursor: default !important;
   color: #ccc;
   position: relative;
 }
 
-/* line 239, ../sass/style.scss */
+/* line 207, ../sass/style.scss */
 .ui-state-disabled.continued span, .ui-state-disabled.previously span {
   display: none;
 }
 
-/* line 243, ../sass/style.scss */
+/* line 211, ../sass/style.scss */
 .ui-state-disabled.continued:before {
   content: "";
   display: block;
@@ -283,7 +208,7 @@ td.end-booking:after {
   transition: opacity 0.1s;
 }
 
-/* line 258, ../sass/style.scss */
+/* line 226, ../sass/style.scss */
 .ui-state-disabled.continued:after {
   content: "";
   display: block;
@@ -297,7 +222,7 @@ td.end-booking:after {
   background: #ea6153;
 }
 
-/* line 271, ../sass/style.scss */
+/* line 239, ../sass/style.scss */
 .ui-state-disabled.previously:before {
   content: "";
   display: block;
@@ -311,7 +236,7 @@ td.end-booking:after {
   background: #ea6153;
 }
 
-/* line 284, ../sass/style.scss */
+/* line 252, ../sass/style.scss */
 .ui-state-disabled.previously:after {
   content: "";
   display: block;
@@ -325,17 +250,91 @@ td.end-booking:after {
   background: #ea6153;
 }
 
-/* line 297, ../sass/style.scss */
+/* line 265, ../sass/style.scss */
 .ui-datepicker-group:last-child {
   margin-right: 0;
 }
 
-/* line 301, ../sass/style.scss */
+/* line 269, ../sass/style.scss */
 td.previously-rounded:after {
   border-radius: 3px 0 0 3px;
 }
 
-/* line 305, ../sass/style.scss */
+/* line 273, ../sass/style.scss */
 td.continued-rounded:after {
   border-radius: 0 3px 3px 0;
+}
+
+/*-----  End of ALREADY BOOKED ITEMS  ------*/
+/* line 281, ../sass/style.scss */
+.selected-booking {
+  background: yellow !important;
+}
+/* line 284, ../sass/style.scss */
+.selected-booking:hover:not(.ui-state-disabled) {
+  background: yellow !important;
+  box-shadow: none !important;
+}
+
+/* line 291, ../sass/style.scss */
+.booking-time {
+  background: yellow;
+  border-radius: 0 !important;
+}
+/* line 295, ../sass/style.scss */
+.booking-time:hover:not(.ui-state-disabled) {
+  background: yellow !important;
+  box-shadow: none !important;
+}
+/* line 300, ../sass/style.scss */
+.booking-time.ui-state-disabled {
+  background: none;
+}
+
+/* line 305, ../sass/style.scss */
+.bookingInfo-start, .bookingInfo-end {
+  display: inline-block;
+  position: absolute;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: #000;
+  border-radius: 3px;
+  height: 40px;
+  right: 55px;
+  bottom: 0;
+  line-height: 40px;
+  padding: 0 10px;
+  color: #fff;
+  z-index: 20;
+}
+/* line 320, ../sass/style.scss */
+.bookingInfo-start:after, .bookingInfo-end:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border: solid 5px transparent;
+  border-left-color: #000;
+  bottom: 16px;
+  right: -10px;
+}
+
+/* line 331, ../sass/style.scss */
+.bookingInfo-end {
+  left: 55px;
+  right: auto;
+}
+/* line 335, ../sass/style.scss */
+.bookingInfo-end:after {
+  border: solid 5px transparent;
+  border-right-color: #000;
+  left: -10px;
+  right: auto;
+}
+/* line 342, ../sass/style.scss */
+.bookingInfo-end.alert {
+  background: #c02717;
+}
+/* line 344, ../sass/style.scss */
+.bookingInfo-end.alert:after {
+  border-right-color: #c02717;
 }

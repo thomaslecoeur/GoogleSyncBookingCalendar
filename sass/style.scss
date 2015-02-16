@@ -1,80 +1,26 @@
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+/*-----  End of IMPORTS  ------*/
+
+
+
+/*=================================
+=            VARIABLES            =
+=================================*/
+
 $bookedColor : #ea6153;
+$font : 'Montserrat', sans-serif;
 
-.selected-booking{
-	background:yellow !important;
-
-	&:hover{
-		background: yellow !important;
-		box-shadow: none !important;
-	}
-}
+/*-----  End of VARIABLES  ------*/
 
 
-.booking-time{
-	background: yellow;
-	border-radius: 0 !important;
-
-	&:hover{
-		background: yellow !important;
-		box-shadow: none !important;
-	}
-
-	&.ui-state-disabled{
-		background: none;
-	}
-}
-
-.bookingInfo-start, .bookingInfo-end{
-	display: inline-block;
-	position: absolute;
-	font-size: 12px;
-	text-transform: uppercase;
-	background: #000;
-	border-radius: 3px;
-	height: 40px;
-	right: 55px;
-	bottom: 0;
-	line-height: 40px;
-	padding: 0 10px;
-	color: #fff;
-	z-index: 20;
-
-	&:after{
-		content: "";
-		display: block;
-		position: absolute;
-		border: solid 5px transparent;
-		border-left-color: #000;
-		bottom: 16px;
-		right: -10px;
-	}
-}
-
-.bookingInfo-end{
-	left: 55px;
-	right: auto;
-
-	&:after{
-		border: solid 5px transparent;
-		border-right-color: #000;
-		left: -10px;
-		right: auto;
-	}
-
-	&.alert{
-		background: darken($bookedColor,20%);
-		&:after{
-			border-right-color: darken($bookedColor,20%);
-		}
-	}
-}
-
-.ui-datepicker-group{
-	border-radius: 3px;
-	/*overflow: hidden;*/
-	box-shadow: inset 0 0 0 2px #333;
-	margin-bottom: 10px;
-}
+/*========================================
+=            CALENDAR GENERAL            =
+========================================*/
 
 .ui-datepicker,
 .ui-datepicker table,
@@ -85,7 +31,7 @@ $bookedColor : #ea6153;
 	margin: 0;
 	padding: 0;
 	border: none;
-	font-family: 'Montserrat', sans-serif;
+	font-family: $font;
 	border-spacing: 0;
 	position: relative;
 }
@@ -103,125 +49,147 @@ $bookedColor : #ea6153;
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 10px;
-}
-
-.ui-datepicker-header{
-	text-align: center;
-	background: #444;
-	padding: 10px 0;
-	color: #fff;
-	text-transform: uppercase;
-	border-radius: 3px 3px 0 0;
-}
-
-.ui-datepicker-group th{
-	background: #333;
-	color: #fff;
-	padding: 10px 0;
-}
-
-.ui-datepicker-group td{
-	height: 40px;
-	width: 40px !important;
-	margin: 2px;
-	text-align: center;
-	cursor: pointer;
-}
-
-td:not(.ui-state-disabled){
 	border-radius: 3px;
-	color: #000;
-	/*background: $bookedColor;
-	color: #fff;*/
-	transition:all 0.3s;
+	box-shadow: inset 0 0 0 2px #333;
+	margin-bottom: 10px;
 }
 
-td:not(.ui-state-disabled):hover{
-	background: #fff;
-	box-shadow: 0 0 2px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.4);
-}
+	/*==========  Calendar > elements  ==========*/
 
-td:not(.ui-state-disabled):hover:after, td:not(.ui-state-disabled):hover:before{
-	opacity: 0;
-}
 
-td.booked{
-	position: relative;
-}
+	.ui-datepicker-header{
+		text-align: center;
+		background: #444;
+		padding: 10px 0;
+		color: #fff;
+		text-transform: uppercase;
+		border-radius: 3px 3px 0 0;
+	}
 
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled){
-	cursor: default;
-	background: none;
-}
+	.ui-datepicker-group th{
+		background: #333;
+		color: #fff;
+		padding: 10px 0;
+	}
 
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled) a{
-	color: #b43;
-	cursor: default;
-}
+	.ui-datepicker-group td{
+		height: 40px;
+		width: 40px !important;
+		margin: 2px;
+		text-align: center;
+		cursor: pointer;
+	}
 
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):after{
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 7px;
-	bottom: 5px;
-	left: 0;
-	width: 100%;
-	background: $bookedColor;
-}
+/*-----  End of CALENDAR GENERAL  ------*/
 
-td.booked.end-booking.start-booking a{
-	color: #ccc;
-	position: relative;
-	z-index: -10;
-}
 
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover, td.booked.end-booking.start-booking:hover{
-	box-shadow: none;
-	cursor: default;
-}
 
-td.booked.end-booking.start-booking:hover a{
-	cursor: default;
-}
+/*============================================
+=            ALREADY BOOKED ITEMS            =
+============================================*/
 
-td.booked:not(.end-booking):not(.start-booking):not(.ui-state-disabled):hover:after, td.booked.end-booking.start-booking:hover:after, td.booked.end-booking.start-booking:hover:before{
-	opacity: 1;
-}
+#calendar td{
+	&:not(.ui-state-disabled){
+		border-radius: 3px;
+		color: #000;
+		transition:all 0.3s;
 
-td.start-booking{
-	position: relative;
-	background: none;
-}
+		&:hover{
+			background: #fff;
+			box-shadow: 0 0 2px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.4);
 
-td.start-booking:before{
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 7px;
-	right: 0px;
-	border: solid 14px transparent;
-	border-bottom-color: $bookedColor;
-	border-right-color: $bookedColor;
-	transition:opacity 0.1s;
-}
+			&:after, &:before{
+				opacity: 0;
+			}
+		}
+	}
 
-td.end-booking{
-	position: relative;
-	overflow: hidden;
-	background: none;
-}
+	&.booked{
+		position: relative;
 
-td.end-booking:after{
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 7px;
-	left: 0px;
-	border: solid 14px transparent;
-	border-top-color: $bookedColor;
-	border-left-color: $bookedColor;
-	transition:opacity 0.1s;
+		&:not(.end-booking):not(.start-booking):not(.ui-state-disabled){
+			cursor: default;
+			background: none;
+
+			a{
+				color: #b43;
+				cursor: default;
+			}
+
+			&:after{
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 7px;
+				bottom: 5px;
+				left: 0;
+				width: 100%;
+				background: $bookedColor;
+			}
+
+			&:hover{
+				box-shadow: none;
+			}
+
+			&:hover:after{
+				opacity: 1;
+			}
+		}
+
+		&.end-booking.start-booking{
+			a{
+				color: #ccc;
+				position: relative;
+				z-index: -10;
+			}
+
+			&:hover{
+				a{
+					cursor: default;
+				}
+			}
+		}
+	}
+
+	&.booked.end-booking.start-booking{
+		&:hover:after, &:hover:before{
+			opacity: 1;
+		}
+	}
+
+	&.start-booking{
+		position: relative;
+		background: none;
+
+		&:before{
+			content: "";
+			position: absolute;
+			z-index: -1;
+			top: 7px;
+			right: 0px;
+			border: solid 14px transparent;
+			border-bottom-color: $bookedColor;
+			border-right-color: $bookedColor;
+			transition:opacity 0.1s;
+		}
+	}
+
+	&.end-booking{
+		position: relative;
+		background: none;
+
+		&:after{
+			content: "";
+			position: absolute;
+			z-index: -1;
+			top: 7px;
+			left: 0px;
+			border: solid 14px transparent;
+			border-top-color: $bookedColor;
+			border-left-color: $bookedColor;
+			transition:opacity 0.1s;
+		}
+	}
 }
 
 
@@ -304,4 +272,77 @@ td.previously-rounded:after{
 
 td.continued-rounded:after{
 	border-radius: 0 3px 3px 0;
+}
+
+/*-----  End of ALREADY BOOKED ITEMS  ------*/
+
+
+
+.selected-booking{
+	background:yellow !important;
+
+	&:hover:not(.ui-state-disabled){
+		background: yellow !important;
+		box-shadow: none !important;
+	}
+}
+
+
+.booking-time{
+	background: yellow;
+	border-radius: 0 !important;
+
+	&:hover:not(.ui-state-disabled){
+		background: yellow !important;
+		box-shadow: none !important;
+	}
+
+	&.ui-state-disabled{
+		background: none;
+	}
+}
+
+.bookingInfo-start, .bookingInfo-end{
+	display: inline-block;
+	position: absolute;
+	font-size: 12px;
+	text-transform: uppercase;
+	background: #000;
+	border-radius: 3px;
+	height: 40px;
+	right: 55px;
+	bottom: 0;
+	line-height: 40px;
+	padding: 0 10px;
+	color: #fff;
+	z-index: 20;
+
+	&:after{
+		content: "";
+		display: block;
+		position: absolute;
+		border: solid 5px transparent;
+		border-left-color: #000;
+		bottom: 16px;
+		right: -10px;
+	}
+}
+
+.bookingInfo-end{
+	left: 55px;
+	right: auto;
+
+	&:after{
+		border: solid 5px transparent;
+		border-right-color: #000;
+		left: -10px;
+		right: auto;
+	}
+
+	&.alert{
+		background: darken($bookedColor,20%);
+		&:after{
+			border-right-color: darken($bookedColor,20%);
+		}
+	}
 }

@@ -36,25 +36,35 @@
 
 	    	$('#calendar td').click(function(event) {
 	    		if(!startSelected && !endSelected){
-	    			startSelected = true;
-		    		$(this).addClass('selected-booking');
-		    		$(this).prepend('<aside class="bookingInfo-start">Début du séjour</aside>');
+	    			if(!$(this).is('.booked:not(.end-booking)')){
+		    			startSelected = true;
+			    		$(this).addClass('selected-booking');
+			    		$(this).prepend('<aside class="bookingInfo-start">Début du séjour</aside>');
+			    	}else{
+			    		$(this).append('<aside class="bookingInfo-end alert">Réservation impossible</aside>');
+			    		$('.alert').delay(3000).fadeOut();
+			    	}
 	    		}else if(startSelected && !endSelected){
-	    			// var wrong = false;
-	    			// while($endTd !== $(this) && wrong == false){
-	    			// 	$('.selected-booking').
-	    			// }
 	    			var $cells = $('#calendar td'),
 			        idx_1 = $cells.index($('.selected-booking')),
 			        idx_2 = $cells.index($(this));
+			        //console.log($('td').filter('.booked'));
+	    			if(
+	    				(
+	    					!$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking)') ||
+	    					(
+	    						$('.selected-booking').hasClass('end-booking') &&
+	    						!$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking):not(.end-booking)') &&
+	    						$cells.slice(idx_1, idx_2 + 1).filter('.end-booking').length <= 1)
+	    					) && 
+	    				$cells.slice(idx_1, idx_2 + 1).length > 1){
 
-	    			if(!$cells.slice(idx_1, idx_2 + 1).is('.booked:not(.start-booking)') && $cells.slice(idx_1, idx_2 + 1).length > 1){
 		    			endSelected = true;
 				    	$cells.slice(idx_1+1, idx_2).addClass('booking-time');
 			    		$(this).addClass('selected-booking');
 			    		$(this).append('<aside class="bookingInfo-end">Fin du séjour</aside>');
 			    	}else{
-			    		$(this).append('<aside class="bookingInfo-end alert">Réservation impossible</aside>');
+			    		$(this).append('<aside class="bookingInfo-end alert">Réservation impossible ! pd</aside>');
 			    		$('.alert').delay(3000).fadeOut();
 			    	}
 	    		}else{
@@ -70,8 +80,6 @@
 	    	//$('#calendar .ui-datepicker-group').slice(0, 3).show();
 	    });
 	</script>
-
-	<link href='http://fonts.googleapis.com/css?family=Quicksand:700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="stylesheets/style.css">
 
