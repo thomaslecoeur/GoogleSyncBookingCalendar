@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 
 	$('#calendar td').click(function(event) {
 		if(!startSelected && !endSelected){
-			if(!$(this).is('.booked:not(.end-booking)') && !$(this).is('.ui-state-disabled')){
+			if(!$(this).is('.booked:not(.end-booking)') && !$(this).is('.booked.start-booking.end-booking') && !$(this).is('.ui-state-disabled')){
 				startSelected = true;
 				$(this).addClass('selected-booking');
 				$(this).prepend('<aside class="bookingInfo-start">Début du séjour</aside>');

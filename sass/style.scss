@@ -170,8 +170,15 @@ $UIColor : #FFC001;
 			}
 
 			&:hover{
+				box-shadow: none;
+				background: none;
+				cursor: default;
 				a{
 					cursor: default;
+				}
+
+				&:after, &:before{
+					opacity: 1;
 				}
 			}
 		}

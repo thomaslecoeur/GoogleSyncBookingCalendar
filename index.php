@@ -29,6 +29,7 @@
 </header>
 
 <section>
+	<aside class="insctructions">Cliquez d'abord sur votre date d'arrivée puis sur le date de votre départ</aside>
 	<div id="calendar"></div>
 </section>
 
