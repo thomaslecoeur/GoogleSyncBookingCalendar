@@ -22,7 +22,7 @@
 		<ul>
 			<li><a title="Github" href="https://github.com/Thomeuxe/GoogleSyncBookingCalendar" target="_blank"><i class="fa fa-github"></i></a></li>
 			<li><a title="Thomas Lecoeur's Twitter" href="https://twitter.com/Thomas_Lecoeur" target="_blank"><i class="fa fa-twitter"></i></a></li>
-			<li><a title="Developer's website" href="http://www.thomaslecoeur.com" target="_blank"><i class="fa fa-globe"></i></a></li>
+			<li><a title="Developer's website" href="http://www.thomaslecoeur.com" target="_blank"><i class="fa fa-link"></i></a></li>
 			<li><a title="Report a bug" href="http://www.thomaslecoeur.com#contact"><i class="fa fa-bug"></i></a></li>
 		</ul>
 	</nav>
