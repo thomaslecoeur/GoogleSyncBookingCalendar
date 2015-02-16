@@ -29,7 +29,7 @@
 </header>
 
 <section>
-	<aside class="insctructions">Cliquez d'abord sur votre date d'arrivée puis sur le date de votre départ</aside>
+	<aside class="instructions"><i class="fa fa-arrow-circle-o-right"></i> Cliquez d'abord sur votre <span class="case">date d'arrivée</span> puis sur votre <span class="case">date de départ</span></aside>
 	<div id="calendar"></div>
 </section>
 

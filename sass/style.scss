@@ -80,6 +80,27 @@ $UIColor : #FFC001;
 	margin-bottom: 10px;
 }
 
+.instructions{
+	font-size: 12px !important;
+	margin-bottom: 10px;
+
+	.fa{
+		font-size: 16px;
+		position: relative;
+		top: 1px;
+	}
+
+	span.case{
+		display: inline-block;
+		padding: 4px;
+		border: solid 1px #aaa;
+		background: #aaa;
+		color: #fff;
+		text-transform: uppercase;
+		border-radius: 3px;
+	}
+}
+
 	/*==========  Calendar > elements  ==========*/
 
 
