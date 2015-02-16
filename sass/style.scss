@@ -2,6 +2,26 @@ $bookedColor : #ea6153;
 
 .selected-booking{
 	background:yellow !important;
+
+	&:hover{
+		background: yellow !important;
+		box-shadow: none !important;
+	}
+}
+
+
+.booking-time{
+	background: yellow;
+	border-radius: 0 !important;
+
+	&:hover{
+		background: yellow !important;
+		box-shadow: none !important;
+	}
+
+	&.ui-state-disabled{
+		background: none;
+	}
 }
 
 .bookingInfo-start, .bookingInfo-end{
@@ -25,7 +45,7 @@ $bookedColor : #ea6153;
 		position: absolute;
 		border: solid 5px transparent;
 		border-left-color: #000;
-		bottom: 18.5px;
+		bottom: 16px;
 		right: -10px;
 	}
 }
@@ -39,6 +59,13 @@ $bookedColor : #ea6153;
 		border-right-color: #000;
 		left: -10px;
 		right: auto;
+	}
+
+	&.alert{
+		background: darken($bookedColor,20%);
+		&:after{
+			border-right-color: darken($bookedColor,20%);
+		}
 	}
 }
 
