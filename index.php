@@ -10,6 +10,7 @@
 
 	<link rel="stylesheet" href="stylesheets/style.css">
 	<link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 
 </head>
 <body>
