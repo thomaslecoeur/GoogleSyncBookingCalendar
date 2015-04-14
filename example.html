@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>GSBC Exemple</title>
+	
+	<script src="lib/jquery-1.10.2.js"></script>
+	<script src="lib/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/jquery-ui-i18n.min.js"></script>
+	<script src="gsbc.jquery.js"></script>
+
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
+
+	<script>
+	jQuery(document).ready(function($){
+		$('#calendar').GSBookingCalendar({
+			'calendarID' : 'te6v0l7kol4vuc5j31flqvd9k0%40group.calendar.google.com',
+			'key' : 'AIzaSyB5I_g-fNbqmngpoWBf3BI7AScNCo3pDSI',
+			'lang' : $('html').attr('lang'),
+			'startOutput' : $('#start'),
+			'endOutput' : $('#end'),
+			'outputDateFormat' : "dd/mm/yy",
+			'pricePerNight' : 135,
+			'priceOutput' : $('#priceOutput'),
+			'pricePerNightAlone' : 115,
+			'priceOutputAlone' : $('#priceOutputAlone')
+		});
+	});
+	</script>
+</head>
+<body>
+	<header id="header">
+		<h1>Google Sync Booking Calendar <span class="version"></span></h1>
+		<h2>A user-friedly booking dates picker synced with your Google booking agenda</h2>
+		<nav>
+			<ul>
+				<li><a title="Github" href="https://github.com/Thomeuxe/GoogleSyncBookingCalendar" target="_blank"><i class="fa fa-github"></i></a></li>
+				<li><a title="Thomas Lecoeur's Twitter" href="https://twitter.com/Thomas_Lecoeur" target="_blank"><i class="fa fa-twitter"></i></a></li>
+				<li><a title="Developer's website" href="http://www.thomaslecoeur.com" target="_blank"><i class="fa fa-link"></i></a></li>
+				<li><a title="Report a bug" href="http://www.thomaslecoeur.com#contact"><i class="fa fa-bug"></i></a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section>
+		<aside class="instructions"><i class="fa fa-arrow-circle-o-right"></i> Cliquez d'abord sur votre <span class="case">date d'arrivée</span> puis sur votre <span class="case">date de départ</span></aside>
+		<div id="calendar"></div>
+	</section>
+
+	<section id="output">
+		<header>
+			<h2>Output</h2>
+		</header>
+		<p>
+			<input id="start" placeholder="Date d'arrivée" type="text"/>
+		</p>
+		<p>
+			<input id="end" placeholder="Date de départ" type="text"/>
+		</p>
+	</section>
+
+	<footer id="footer">
+	<hr>
+		<ul>
+			<li>Tous droits réservés &copy; 2015 Thomas Lecoeur</li>
+			<li><a href="http://www.thomaslecoeur.com" target="_blank">Made with <i class="fa fa-heart"></i> by Thomas Lecoeur</a></li>
+			<li><a href="https://twitter.com/Thomas_Lecoeur" target="_blank"><i class="fa fa-twitter"></i> Follow me on Twitter !</a></li>
+			<li><a href="https://github.com/Thomeuxe/GoogleSyncBookingCalendar" target="_blank"><i class="fa fa-github"></i> Fork this project !</a></li>
+		</ul>
+	</footer>
+</body>
+</html>

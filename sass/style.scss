@@ -51,15 +51,24 @@ $UIColor : #FFC001;
 .ui-datepicker td,
 .ui-datepicker th {
 	width: auto !important;
-	margin: 0;
+	margin: 0 !important;
 	padding: 0;
 	border: none;
 	border-spacing: 0;
 	position: relative;
+	text-align: center !important;
+}
+
+.ui-datepicker tr{
+	border: none !important;
+}
+
+.ui-datepicker tr:hover{
+	background: none !important;
 }
 
 .ui-datepicker{
-	white-space: nowrap;
+	//white-space: nowrap;
 	overflow: visible;
 	@media (max-width: $xs-device-max) {
 		white-space: normal;
@@ -166,7 +175,7 @@ $UIColor : #FFC001;
 			&:after{
 				content: "";
 				position: absolute;
-				z-index: -1;
+				z-index: 0;
 				top: 7px;
 				bottom: 5px;
 				left: 0;
@@ -185,9 +194,9 @@ $UIColor : #FFC001;
 
 		&.end-booking.start-booking{
 			a{
-				color: #ccc;
+				color: #000;
 				position: relative;
-				z-index: -10;
+				z-index: 0;
 			}
 
 			&:hover{
@@ -218,7 +227,7 @@ $UIColor : #FFC001;
 		&:before{
 			content: "";
 			position: absolute;
-			z-index: -1;
+			z-index: 0;
 			top: 7px;
 			right: 0px;
 			border: solid 14px transparent;
@@ -235,7 +244,7 @@ $UIColor : #FFC001;
 		&:after{
 			content: "";
 			position: absolute;
-			z-index: -1;
+			z-index: 0;
 			top: 7px;
 			left: 0px;
 			border: solid 14px transparent;
@@ -250,6 +259,8 @@ $UIColor : #FFC001;
 .ui-datepicker-group td a{
 	color: #000;
 	text-decoration: none;
+	position: relative;
+	z-index: 10;
 }
 
 .ui-state-disabled{
@@ -339,6 +350,14 @@ td.continued-rounded:after{
 		background: $UIColor !important;
 		box-shadow: none !important;
 	}
+
+	&.arrival{
+		border-radius: 5px 0 0 0 !important;
+	}
+
+	&.departure{
+		border-radius: 0 0 5px 0 !important;
+	}
 }
 
 
@@ -360,6 +379,7 @@ td.continued-rounded:after{
 	display: inline-block;
 	position: absolute;
 	font-size: 12px;
+	white-space: nowrap;
 	text-transform: uppercase;
 	background: #000;
 	border-radius: 3px;
@@ -382,6 +402,62 @@ td.continued-rounded:after{
 	}
 }
 
+.bookingInfo-start, .bookingInfo-end{
+	span.deleteBooking{
+		padding: 0 20px;
+		box-sizing: border-box;
+		display: inline-block;
+		position: relative;
+		vertical-align: top;
+		color: #000;
+		height: 100%;
+		margin-left: -10px;
+		margin-right: 10px;
+		background: #222;
+		border-radius: 3px 0 0 3px;
+		height: 40px;
+		width: 20px;
+
+		&:before, &:after{
+			content: "";
+			border-radius: 2px;
+			display: block;
+			height: 4px;
+			width: 15px;
+			position: absolute;
+			left: 50%;
+			margin-left: -8px;
+			background: #fff;
+			top: 50%;
+			margin-top: -2px;
+		}
+
+		&:after{
+			-ms-transform: rotate(45deg); /* IE 9 */
+		    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+		    transform: rotate(45deg);
+		}
+
+		&:before{
+			-ms-transform: rotate(-45deg); /* IE 9 */
+		    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+		    transform: rotate(-45deg);
+		}
+
+		&:hover{
+			&:after, &:before{
+				background: $UIColor;
+			}
+		}
+	}
+
+	span.deleteEnd{
+		margin-left: 10px;
+		margin-right: -10px;
+		border-radius: 0 3px 3px 0;
+	}
+}
+
 .bookingInfo-end{
 	left: 55px;
 	right: auto;
@@ -395,6 +471,9 @@ td.continued-rounded:after{
 
 	&.alert{
 		background: darken($bookedColor,20%);
+		border-radius: 3px !important;
+		margin: 0 !important;
+		padding: 0 10px !important;
 		&:after{
 			border-right-color: darken($bookedColor,20%);
 		}
@@ -409,24 +488,94 @@ td.continued-rounded:after{
 #calendar{
 	nav{
 		button{
-			padding: 15px;
+			padding: 0 15px;
+			font-size: 10px;
 			border: none;
 			background: $UIColor;
 			color: #fff;
 			text-transform: uppercase;
 			font-weight: bold;
 			font-family: $font;
-			border-radius: 3px;
-			top: 50%;
-			margin-top: -20px;
+			height: 39px;
+			line-height: 39px;
+			width: auto !important;
+			outline: none;
+			transition: 0 !important;
+			&:hover{
+				background: lighten($UIColor,20%);
+			}
 			&.prev{
 				position: absolute;
-				left: -120px;
+				border-radius: 2px 0 0 0;
+				top: 0;
+				left: 0px;
+
+				&:before, &:after{
+					content: "";
+					display: block;
+					height: 4px;
+					width: 12px;
+					background: #fff;
+					position: relative;
+					right: 2px;
+				}
+
+				&:before{
+					-ms-transform: rotate(-45deg); /* IE 9 */
+				    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+				    transform: rotate(-45deg);
+				    bottom: 1px;
+				}
+
+				&:after{
+					-ms-transform: rotate(45deg); /* IE 9 */
+				    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+				    transform: rotate(45deg);
+				    top: 1px;
+				}
 			}
 
 			&.next{
 				position: absolute;
-				right: -75px;
+				border-radius: 0 2px 0 0;
+				top: 0;
+				right: 10px;
+
+				// &:after{
+				// 	content: "";
+				// 	position: absolute;
+				// 	height: 0;
+				// 	border: solid 10px transparent;
+				// 	border-left-color: $UIColor;
+				// 	top: 50%;
+				// 	margin-top: -10px;
+				// 	right: -20px;
+
+				// }
+
+				&:before, &:after{
+					content: "";
+					display: block;
+					height: 4px;
+					width: 12px;
+					background: #fff;
+					position: relative;
+					left: 2px;
+				}
+
+				&:before{
+					-ms-transform: rotate(45deg); /* IE 9 */
+				    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+				    transform: rotate(45deg);
+				    bottom: 1px;
+				}
+
+				&:after{
+					-ms-transform: rotate(-45deg); /* IE 9 */
+				    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+				    transform: rotate(-45deg);
+				    top: 1px;
+				}
 			}
 
 			&:hover{
@@ -434,7 +583,7 @@ td.continued-rounded:after{
 			}
 
 			&[disabled]{
-				background: #ccc;
+				background: rgba(255,255,255,.8);
 				color: #aaa;
 
 				&:hover{
